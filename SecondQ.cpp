@@ -4,8 +4,8 @@ using namespace std;
 /*
 Create Binary tree and perform following operations:
 a. Create
-b. Insert
-c. Display (using all 3 traversals with recursion)
+b. Display In-order traversal
+c. Depth of a tree
 */
 
 class node{
@@ -25,15 +25,14 @@ class tree{
         void createTree();
         void insertData(node *n1,node *n2);
         void displayIn(node *rt);
-        void displayPos(node *rt);
-        void displayPre(node *rt);
+        int maxDepth(node *rt);
         tree(){
             root = NULL;
         }
 };
 
 void tree::createTree(){
-    node *newNode = new node;
+    node *newNode = new node();
     cout<<"Enter Data : ";
     cin>>newNode->data;
     if (root == NULL){
@@ -71,23 +70,25 @@ void tree::displayIn(node *rt){
     }
 }
 
-void tree::displayPos(node *rt){
-    if(rt != NULL){
-        displayIn(rt->left);
-        displayIn(rt->right);
-        cout<<rt->data;
+int tree::maxDepth(node *rt){
+    if (rt == NULL)
+        return -1;
+    else
+    {
+        /* compute the depth of each subtree */
+        int lDepth = maxDepth(rt->left);
+        int rDepth = maxDepth(rt->right);
+    
+        /* use the larger one */
+        if (lDepth > rDepth)
+            return(lDepth + 1);
+        else return(rDepth + 1);
     }
+    
 }
 
-void tree::displayPre(node *rt){
-    if(rt != NULL){
-        cout<<rt->data;
-        displayIn(rt->left);
-        displayIn(rt->right);
-    }
-}
-
-int main(){
+int main()
+{
     tree t1;
     for(int i = 0; i<5; i++){
         t1.createTree();
@@ -96,9 +97,6 @@ int main(){
     cout<<"Inorder Display"<<endl;
     t1.displayIn(t1.root);
     cout<<endl;
-    cout<<"Postorder Display"<<endl;
-    t1.displayPos(t1.root);
-    cout<<endl;
-    cout<<"Preorder Display"<<endl;
-    t1.displayPre(t1.root);
+    cout<<"Maximum depth of tree is "<<t1.maxDepth(t1.root)<<endl;
+
 }
