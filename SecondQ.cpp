@@ -75,11 +75,10 @@ int tree::maxDepth(node *rt){
         return -1;
     else
     {
-        /* compute the depth of each subtree */
+        
         int lDepth = maxDepth(rt->left);
         int rDepth = maxDepth(rt->right);
     
-        /* use the larger one */
         if (lDepth > rDepth)
             return(lDepth + 1);
         else return(rDepth + 1);
@@ -90,7 +89,7 @@ int tree::maxDepth(node *rt){
 int main()
 {
     tree t1;
-    for(int i = 0; i<5; i++){
+    for(int i = 0; i<7; i++){
         t1.createTree();
     }
     cout<<endl;
