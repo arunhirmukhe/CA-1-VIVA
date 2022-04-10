@@ -75,13 +75,13 @@ void tree::displayPos(node *rt){
     if(rt != NULL){
         displayIn(rt->left);
         displayIn(rt->right);
-        cout<<rt->data;
+        cout<<rt->data<<" ";
     }
 }
 
 void tree::displayPre(node *rt){
     if(rt != NULL){
-        cout<<rt->data;
+        cout<<rt->data<<" ";
         displayIn(rt->left);
         displayIn(rt->right);
     }
