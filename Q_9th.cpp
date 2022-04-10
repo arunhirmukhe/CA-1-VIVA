@@ -2,7 +2,7 @@
 Implement binary search tree and perform following operations:
 a. Insert
 b. Display In-order traversal
-c. Mirror image
+c. Display level wise
 */
 
 #include<iostream>
